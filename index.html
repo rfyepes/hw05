@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icon.png">
+    <title>Lottery Simulator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    
+    <!-- Header -->
+    <div class="header">
+      <div class="header-block">
+        <img src="logo.png" id="logo"/>
+      </div>
+      <div class="header-block">
+        <h1>Lottery Simulator</h1>
+        <br>Which prize will you win?
+      </div>
+    </div>
+    
+    <!-- Lottery Simulation -->
+    <script language="javascript">
+      
+      /* function that prints a given pick and lucky ball with a custom label */
+      function printPick(pick, label, lucky) {
+        document.write("<div class='pick'><div class='label'>" + label + "</div>");
+        for (let i = 0; i < 5; i++) {
+          document.write("<div class='ball'>" + pick[i] + "</div>");
+        }
+        document.write("<div class='lucky'>" + lucky + "</div></div>");
+      }
+      /* function that checks if a given value is found in the winning set */
+      function isWinningNum(n) {
+        if (n == 12 || n == 15 || n == 24 || n == 35 || n == 48) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      
+      /* create an array to store the pick and to keep track of taken values */
+      pick = new Array(5);
+      takenValues = new Array(48);
+      
+      /* populate the array with unique values between 1 and 48 */
+      for (let i = 0; i < 5; i++) {
+          num = Math.floor(Math.random() * 48) + 1;
+          if (!takenValues[num - 1]) {
+              takenValues[num - 1] = true;
+              pick[i] = num;
+          } else {
+              i--; 
+          }
+      }
+      
+      /* find the lucky ball and print out the unsorted pick with lucky ball */
+      lucky = Math.floor((Math.random() * 18) + 1);
+      printPick(pick, "Your pick before sorting:", lucky);
+      
+      /* sort the pick and print the results */
+      pick.sort(function(a, b){return a - b});
+      printPick(pick, "Your pick after sorting:", lucky);
+      
+      /* print the winning pick */
+      printPick([12, 15, 24, 35, 48], "The winning numbers are:", 3);
+      
+      /* calculate the number of matches in the pick */
+      matchCount = 0;
+      for (let i = 0; i < 5; i++) {
+        if (isWinningNum(pick[i])) {
+          matchCount++;
+        }
+      }
+      
+      /* determine if the lucky ball matches */
+      luckyMatch = (lucky == 3);
+     
+      /* print out the number of matches */
+      if (matchCount == 1) {
+        document.write("You have 1 match!<br />");
+      } else if (matchCount == 0) {
+        document.write("You have no pick matches.<br />");
+      } else {
+        document.write("You have " + matchCount + " matches!<br />");
+      }
+      
+      /* print out the lucky ball results */
+      if (luckyMatch) {
+        document.write("Your lucky ball matches!");
+      } else {
+        document.write("Your lucky ball doesn't match.");
+      }
+      
+      /* print what the payout would be for the pick */
+      document.write("<div class='pick' id='winnings'>Your winnings: ");
+      if (matchCount == 5 && luckyMatch) {
+        document.write("$7,000 a WEEK for LIFE</div>");
+      } else if (matchCount == 5) {
+        document.write("$25,000 a YEAR for LIFE</div>");
+      } else if (matchCount == 4 && luckyMatch) {
+        document.write("$5,000</div>");
+      } else if (matchCount == 4) {
+        document.write("$200</div>");
+      } else if (matchCount == 3 && luckyMatch) {
+        document.write("$150</div>");
+      } else if (matchCount == 3) {
+        document.write("$20</div>");
+      } else if (matchCount == 2 && luckyMatch) {
+        document.write("$25</div>");
+      } else if (matchCount == 2) {
+        document.write("$3</div>");
+      } else if (matchCount == 1 && luckyMatch) {
+        document.write("$6</div>");
+      } else if (luckyMatch) {
+        document.write("$4</div>");
+      } else {
+        document.write("Nothing :(</div>");
+      }
+    </script>
+  </body>
+</html>

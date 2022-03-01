@@ -1,0 +1,130 @@
+.header {
+  display: block;
+  background-color: #0a6911;
+  font-size: 20px;
+  font-family: Futura;
+  padding: 5px;
+}
+
+.header-block {
+  display: inline-block;
+  vertical-align: middle;
+  color: white;
+  text-align: left;
+}
+
+#logo { height: 200px; }
+
+h1 {
+  display: inline-block;
+  font-size: 50px;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: Futura;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  background-color: #d6ffda;
+}
+
+.pick {
+  margin: auto;
+  margin-top: 30px; 
+  margin-bottom: 30px; 
+  padding: 10px;
+  background-color: #d6ae0f;
+  border-radius: 15px;
+  font-family: Futura;
+  text-align: center;
+  overflow: hidden;
+  width: 70%;
+}
+
+.ball {
+  display: inline-block;
+  border: 2px black solid;
+  padding: 10px;
+  margin: 10px;
+  width: 20px;
+  text-align: center;
+  border-radius: 100%;
+  background-color: white;
+  
+}
+
+.lucky {
+  display: inline-block;
+  border: 2px black solid;
+  padding: 10px;
+  margin: 10px;
+  width: 20px;
+  text-align: center;
+  border-radius: 100%;
+  background-color: #0a6911;
+  color: white;
+}
+
+.label {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: right;
+  width: 250px;
+  vertical-align: middle;
+}
+
+#winnings {
+  background-color: green;
+  width: 300px;
+  border-radius: 15px;
+  font-weight: bold;
+  color: white;
+}
+
+@media screen and (max-width: 922px) {
+  .label {
+    display: block;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 750px) { h1 { font-size: 35px; } }
+
+@media screen and (max-width: 700px) {
+  h1 { font-size: 30px; }
+  #logo { height: 125px; }
+  
+  .header {
+    font-size: 15px;
+    padding: 3px;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+}
+
+
+@media screen and (max-width: 565px) {
+  .ball {
+    border: 2px black solid;
+    padding: 5px;
+    margin: 5px;
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+    
+  }
+  
+  .lucky {
+    font-size: 10px;
+    padding: 5px;
+    margin: 5px;
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+  }
+  
+  #winnings { width: 250px; }
+}
